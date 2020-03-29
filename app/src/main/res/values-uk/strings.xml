@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Nazar Rusnak
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">Помічник НУЗП</string>
+    <string name="first_class">1-а пара 08:30 – 09:50</string>
+    <string name="second_class">2-а пара 10:05 – 11:25</string>
+    <string name="third_class">3-я пара 11:55 – 13:15</string>
+    <string name="fourth_class">4-а пара 13:25 – 14:45</string>
+    <string name="fifth_class">5-а пара 14:55 – 16:15</string>
+    <string name="sixth_class">6-а пара 16:45 – 18:05</string>
+    <string name="seventh_class">7-а пара 18:15 – 19:35</string>
+    <string name="eighth_class">8-а пара 19:45 – 21:05</string>
+    <string name="time_left_class">До кінця пари:</string>
+    <string name="time_left_break">До кінця перерви:</string>
+    <string name="classes_end">Усі пари на сьогодні завершилися</string>
+    <string name="schedule_title">Розклад</string>
+    <string name="day_schedule">Дзвінки</string>
+    <string name="class_schedule">Пари</string>
+    <string name="monday">Понеділок</string>
+    <string name="tuesday">Вівторок</string>
+    <string name="wednesday">Середа</string>
+    <string name="thursday">Четвер</string>
+    <string name="friday">П\’ятниця</string>
+    <string name="saturday">Субота</string>
+    <string name="numerator">Чисельник</string>
+    <string name="denominator">Знаменник</string>
+    <string name="classroom">Аудиторія</string>
+    <string name="class_name">Назва пари</string>
+    <string name="classroom_search_hint">Введіть номер аудиторії</string>
+    <string name="classroom_search_title">Аудиторії</string>
+    <string name="classroom_num">Аудиторія: %1$s</string>
+    <string name="university_building_num">Будівля: %1$s</string>
+    <string name="floor_num">Поверх: %1$s</string>
+    <string name="class_search_error">Аудиторія не знайдена</string>
+    <string name="text_to_share">Аудиторія %1$s знаходиться в корпусі %2$s, %3$s поверх</string>
+    <string name="share">Поділитися</string>
+    <string name="phonebook_title">Довідник</string>
+    <string name="phone_book_subscriber">Абонент:</string>
+    <string name="phone_book_name">ПІБ:</string>
+    <string name="phone_book_city_number">Міський телефон:</string>
+    <string name="phone_book_local_number">Місцевий телефон:</string>
+    <string name="phone_book_room_building">Приміщення (корпус):</string>
+    <string name="connection_error">При спробі завантажити телефонну книгу сталася помилка.\nПеревірте інтернет з\'єднання…</string>
+    <string name="try_again">Спробувати ще раз</string>
+    <string name="progress">Завантаження…</string>
+    <string name="search">Пошук</string>
+    <string name="help">Допомога</string>
+    <string name="phone_book_disclaimer">Всі дані на сторінці телефонної книги вилучені з https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-zntu. Розробник додатку не несе відповідальності за недостовірність або застарілість витягнутих даних.</string>
+    <string name="phone_book_disclaimer_title">Інформація про дані телефонної книги</string>
+    <string name="dark_theme">Темна</string>
+    <string name="light_theme">Світла</string>
+    <string name="system_theme">Налаштування системи</string>
+    <string name="developer_title">Розробник</string>
+    <string name="designer_title">Дизайнер</string>
+    <string name="developers_section_title">Розробники</string>
+    <string name="settings_title">Налаштування</string>
+    <string name="schedule_settings_title">Налаштування розкладу</string>
+    <string name="schedule_nav_title">Розклад</string>
+    <string name="classroom_search_nav_title">Аудиторії</string>
+    <string name="phone_book_nav_title">Довідник</string>
+    <string name="settings_nav_title">Налаштування</string>
+    <string name="theme_settings_title">Тема додатку</string>
+    <string name="theme_settings_detail">Змінити тему додатку на світлу, темну або зробити так, щоб вона відповідала системній темі</string>
+    <string name="theme_settings">Налаштування теми</string>
+    <string name="date_sync_title">Синхронізувати з датою</string>
+    <string name="date_sync_detail">Відкривати вкладку розкладу відповідну поточній даті</string>
+    <string name="nothing_found">Нічого не знайдено :(</string>
+</resources>

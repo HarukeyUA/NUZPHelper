@@ -1,0 +1,238 @@
+<!--
+  ~ Copyright 2020 Nazar Rusnak
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.harukey.zpnuhelper.phoneBook.PhoneBookFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundSurface"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:elevation="0dp"
+                android:background="@color/backgroundSurface">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true">
+
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/horizontal_screen_margin"
+                        android:layout_marginTop="@dimen/title_text_top_margin"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/phonebook_title"
+                        android:textAppearance="@style/TextFragmentTitle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Phone Book" />
+
+                    <ImageButton
+                        android:id="@+id/help_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_help"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:contentDescription="@string/help"
+                        android:tint="@color/textPrimaryColor"/>
+
+                    <ImageButton
+                        android:id="@+id/search_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_search"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_title"
+                        app:layout_constraintEnd_toStartOf="@+id/help_button"
+                        android:contentDescription="@string/search"
+                        android:tint="@color/textPrimaryColor"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/search_text_input_layout"
+                        style="@style/Widget.Design.TextInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginEnd="22dp"
+                        android:layout_marginBottom="18dp"
+                        android:visibility="invisible"
+                        app:endIconDrawable="@drawable/ic_clear"
+                        app:endIconMode="clear_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/help_button"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/search_text_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:singleLine="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/titleSearchAreaGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:constraint_referenced_ids="text_title,search_button" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/phoneCardsList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="vertical"
+                android:scrollbarThumbVertical="@drawable/thumb"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/progressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:animateLayoutChanges="true"
+                android:text="@string/progress"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/errorsGuideline"
+                app:layout_constraintEnd_toEndOf="@+id/phoneCardsList"
+                app:layout_constraintStart_toStartOf="@+id/phoneCardsList" />
+
+            <com.google.android.material.progressindicator.ProgressIndicator
+                android:id="@+id/progress_indicator"
+                style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:animateLayoutChanges="true"
+                android:visibility="invisible"
+                app:indicatorType="linear"
+                app:layout_constraintEnd_toEndOf="@+id/progressText"
+                app:layout_constraintStart_toStartOf="@+id/progressText"
+                app:layout_constraintTop_toBottomOf="@+id/errorsGuideline" />
+
+            <TextView
+                android:id="@+id/networkErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/connection_error"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/errorsGuideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/refreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/try_again"
+                android:visibility="invisible"
+                app:icon="@drawable/ic_refresh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/errorsGuideline"
+                style="@style/ShadowlessButton"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/connectionErrorGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="networkErrorText,refreshButton"
+                android:visibility="invisible"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/progressGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="progress_indicator,progressText"
+                android:visibility="invisible"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/errorsGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/bottomGuideLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="80dp" />
+
+            <TextView
+                android:id="@+id/empty_list_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/nothing_found"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/errorsGuideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/inactiveElementColor"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

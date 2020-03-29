@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Nazar Rusnak
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="PhoneBookEntry"
+            type="com.harukey.zpnuhelper.phoneBook.PhoneBookEntry" />
+    </data>
+
+    <com.harukey.zpnuhelper.ui.GlowCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:paddingStart="12dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/inactiveElementColor"
+            android:layout_marginBottom="6dp"
+            stringToFormat="@{@string/phone_book_subscriber}"
+            argument="@{PhoneBookEntry.assignment}"
+            hideIfEmpty="@{PhoneBookEntry.assignment}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/inactiveElementColor"
+            android:layout_marginBottom="6dp"
+            stringToFormat="@{@string/phone_book_name}"
+            argument="@{PhoneBookEntry.name}"
+            hideIfEmpty="@{PhoneBookEntry.name}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/inactiveElementColor"
+            android:autoLink="phone"
+            android:layout_marginBottom="6dp"
+            stringToFormat="@{@string/phone_book_city_number}"
+            argument="@{PhoneBookEntry.cityNumber}"
+            hideIfEmpty="@{PhoneBookEntry.cityNumber}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/inactiveElementColor"
+            android:autoLink="phone"
+            android:layout_marginBottom="6dp"
+            stringToFormat="@{@string/phone_book_local_number}"
+            argument="@{PhoneBookEntry.localNumber}"
+            hideIfEmpty="@{PhoneBookEntry.localNumber}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/inactiveElementColor"
+            stringToFormat="@{@string/phone_book_room_building}"
+            argument="@{PhoneBookEntry.location}"
+            hideIfEmpty="@{PhoneBookEntry.location}"/>
+        
+    </com.harukey.zpnuhelper.ui.GlowCardView>
+
+</layout>

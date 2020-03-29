@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Nazar Rusnak
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.harukey.zpnuhelper.SettingsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundSurface"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="@dimen/title_text_top_margin"
+                android:text="@string/settings_title"
+                android:textAppearance="@style/TextFragmentTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/scheduleSettingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="29dp"
+                android:text="@string/schedule_settings_title"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+            <ImageView
+                android:id="@+id/dateSyncIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:src="@drawable/ic_sync"
+                app:layout_constraintBottom_toBottomOf="@+id/dateSyncSettingDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dateSyncSettingTitle"
+                tools:ignore="ContentDescription"
+                app:tint="@color/textPrimaryColor"/>
+
+            <TextView
+                android:id="@+id/dateSyncSettingTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/date_sync_title"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/dateSyncCheckBox"
+                app:layout_constraintStart_toEndOf="@+id/dateSyncIcon"
+                app:layout_constraintTop_toBottomOf="@+id/scheduleSettingsTitle" />
+
+            <TextView
+                android:id="@+id/dateSyncSettingDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/date_sync_detail"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/dateSyncCheckBox"
+                app:layout_constraintStart_toStartOf="@+id/dateSyncSettingTitle"
+                app:layout_constraintTop_toBottomOf="@+id/dateSyncSettingTitle" />
+
+            <CheckBox
+                android:id="@+id/dateSyncCheckBox"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="39dp"
+                android:background="@drawable/checkbox_background"
+                android:button="@null"
+                app:layout_constraintBottom_toBottomOf="@+id/dateSyncSettingDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dateSyncSettingTitle" />
+
+            <TextView
+                android:id="@+id/themeSettingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="30dp"
+                android:text="@string/theme_settings"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateSyncSettingDetails" />
+
+            <ImageView
+                android:id="@+id/themeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:src="@drawable/ic_moon"
+                app:layout_constraintBottom_toBottomOf="@+id/themeSettingDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/themeSettingTitle"
+                tools:ignore="ContentDescription"
+                app:tint="@color/textPrimaryColor"/>
+
+            <TextView
+                android:id="@+id/themeSettingTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/theme_settings_title"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/themeSpinner"
+                app:layout_constraintStart_toEndOf="@+id/themeIcon"
+                app:layout_constraintTop_toBottomOf="@+id/themeSettingsTitle" />
+
+            <TextView
+                android:id="@+id/themeSettingDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/theme_settings_detail"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/themeSpinner"
+                app:layout_constraintStart_toStartOf="@+id/themeSettingTitle"
+                app:layout_constraintTop_toBottomOf="@id/themeSettingTitle" />
+
+            <Spinner
+                android:id="@+id/themeSpinner"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="39dp"
+                android:entries="@array/theme_mode"
+                app:layout_constraintBottom_toBottomOf="@+id/themeSettingDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/themeSettingTitle"
+                style="@style/SettingsSpinner" />
+
+            <TextView
+                android:id="@+id/developersTitile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="30dp"
+                android:text="@string/developers_section_title"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/themeSettingDetails" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/developerAvatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/harukey_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/developersTitile"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
+
+            <TextView
+                android:id="@+id/developerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/developer_name"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="16sp"
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toTopOf="@id/developerTitleText"
+                app:layout_constraintEnd_toStartOf="@+id/developerButton"
+                app:layout_constraintStart_toEndOf="@+id/developerAvatar"
+                app:layout_constraintTop_toTopOf="@+id/developerAvatar" />
+
+            <TextView
+                android:id="@+id/developerTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/developer_title"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/developerAvatar"
+                app:layout_constraintEnd_toStartOf="@+id/developerButton"
+                app:layout_constraintStart_toEndOf="@+id/developerAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/developerName" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/developerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/horizontal_screen_margin"
+                android:text="@string/github"
+                app:icon="@drawable/ic_github"
+                app:layout_constraintBottom_toBottomOf="@+id/developerAvatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/designerButton"
+                app:layout_constraintTop_toTopOf="@+id/developerAvatar"
+                android:textSize="12sp"
+                style="@style/ShadowlessButton"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/designerAvatar"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                android:layout_marginStart="@dimen/horizontal_screen_margin"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/atimohov_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/developerAvatar"
+                app:shapeAppearanceOverlay="@style/circleImageView" />
+
+            <TextView
+                android:id="@+id/designerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/designer_name"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/designerTitleText"
+                app:layout_constraintEnd_toStartOf="@+id/designerButton"
+                app:layout_constraintStart_toEndOf="@+id/designerAvatar"
+                app:layout_constraintTop_toTopOf="@+id/designerAvatar" />
+
+            <TextView
+                android:id="@+id/designerTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/designer_title"
+                android:textColor="@color/inactiveElementColor"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/designerAvatar"
+                app:layout_constraintEnd_toStartOf="@+id/designerButton"
+                app:layout_constraintStart_toEndOf="@+id/designerAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/designerName" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/designerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/horizontal_screen_margin"
+                android:text="@string/telegram"
+                app:icon="@drawable/ic_telegram"
+                app:layout_constraintBottom_toBottomOf="@+id/designerAvatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/designerAvatar"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                style="@style/ShadowlessButton"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
