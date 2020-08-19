@@ -32,6 +32,7 @@ import com.harukey.zpnuhelper.R
 import com.harukey.zpnuhelper.databinding.DayScheduleFragmentBinding
 import com.harukey.zpnuhelper.daySchedule.classSchedule.ClassScheduleFragment
 import com.harukey.zpnuhelper.daySchedule.timeSchedule.TimeScheduleFragment
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil
 
 
 class DayScheduleFragment : Fragment() {
@@ -69,8 +70,10 @@ class DayScheduleFragment : Fragment() {
                 super.onPageSelected(position)
                 if (position != 0)
                     binding.timeLeftCard.visibility = View.INVISIBLE
-                else
+                else {
+                    UIUtil.hideKeyboard(requireActivity())
                     binding.timeLeftCard.visibility = View.VISIBLE
+                }
             }
         })
 
