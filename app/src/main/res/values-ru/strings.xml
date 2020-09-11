@@ -76,7 +76,7 @@
     <string name="settings_nav_title">Настройки</string>
     <string name="theme_settings_title">Тема приложения</string>
     <string name="theme_settings_detail">Изменить тему приложения на светлую, темную или сделать так, чтобы она соответствовала системной теме</string>
-    <string name="theme_settings">Настроки темы</string>
+    <string name="theme_settings">Настройки темы</string>
     <string name="date_sync_title">Синхронизировать с  датой</string>
     <string name="date_sync_detail">Открывать вкладку расписания соответствующую текущей дате</string>
     <string name="nothing_found">Ничего не найдено :(</string>
