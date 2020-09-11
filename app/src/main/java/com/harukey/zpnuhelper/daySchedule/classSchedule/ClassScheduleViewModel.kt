@@ -47,6 +47,6 @@ class ClassScheduleViewModel(application: Application) : AndroidViewModel(applic
         return if (weekDay == 6) 0 else weekDay
     }
 
-    fun getWeekType(): Int = if(LocalDate.now().get(WeekFields.ISO.weekOfWeekBasedYear()) % 2 == 0) 1 else 0
+    fun getWeekType(): Int = if(LocalDate.now().get(WeekFields.ISO.weekOfWeekBasedYear()) % 2 == 0) 0 else 1
 
 }

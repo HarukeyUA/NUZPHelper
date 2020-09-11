@@ -28,8 +28,8 @@ android {
         applicationId "com.harukey.zpnuhelper"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 15
-        versionName "TwoDotTwo"
+        versionCode 16
+        versionName "TwoDotThree"
         vectorDrawables.useSupportLibrary true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
