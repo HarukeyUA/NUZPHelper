@@ -29,7 +29,7 @@ import java.util.*
 class PhoneBookFetcher {
 
     private val tableURL =
-        "https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-zntu/"
+        "https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-universitetu/"
     private val cityNumberPrefix = "38061"
     private val localNumberPrefix = "380617698"
 
