@@ -75,11 +75,6 @@ class ClassScheduleFragment : Fragment() {
         return view.root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        viewModel.loadScheduleForDay(0, 0)
-    }
-
     private fun getSelectedWeekType(): Int = spinnerWeekType.selectedItemPosition
 
     private fun getSelectedWeekDay(): Int = spinnerWeekDay.selectedItemPosition
