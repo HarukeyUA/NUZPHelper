@@ -22,102 +22,93 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundSurface"
         android:animateLayoutChanges="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp">
+            app:elevation="0dp"
+            android:background="@color/backgroundSurface">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:elevation="0dp"
-                android:background="@color/backgroundSurface">
+                android:animateLayoutChanges="true"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:animateLayoutChanges="true">
+                    android:layout_marginStart="@dimen/horizontal_screen_margin"
+                    android:layout_marginTop="@dimen/title_text_top_margin"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/phonebook_title"
+                    android:textAppearance="@style/TextFragmentTitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Phone Book" />
 
-                    <TextView
-                        android:id="@+id/text_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/horizontal_screen_margin"
-                        android:layout_marginTop="@dimen/title_text_top_margin"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/phonebook_title"
-                        android:textAppearance="@style/TextFragmentTitle"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Phone Book" />
+                <ImageButton
+                    android:id="@+id/help_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_help"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/help"
+                    android:tint="@color/textPrimaryColor"/>
 
-                    <ImageButton
-                        android:id="@+id/help_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="2dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:padding="5dp"
-                        android:src="@drawable/ic_help"
-                        app:layout_constraintBottom_toBottomOf="@+id/text_title"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:contentDescription="@string/help"
-                        android:tint="@color/textPrimaryColor"/>
+                <ImageButton
+                    android:id="@+id/search_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_title"
+                    app:layout_constraintEnd_toStartOf="@+id/help_button"
+                    android:contentDescription="@string/search"
+                    android:tint="@color/textPrimaryColor"/>
 
-                    <ImageButton
-                        android:id="@+id/search_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="2dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:padding="5dp"
-                        android:src="@drawable/ic_search"
-                        app:layout_constraintBottom_toBottomOf="@+id/text_title"
-                        app:layout_constraintEnd_toStartOf="@+id/help_button"
-                        android:contentDescription="@string/search"
-                        android:tint="@color/textPrimaryColor"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/search_text_input_layout"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="18dp"
+                    android:visibility="invisible"
+                    app:endIconDrawable="@drawable/ic_clear"
+                    app:endIconMode="clear_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/help_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/search_text_input_layout"
-                        style="@style/Widget.Design.TextInputLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="35dp"
-                        android:layout_marginEnd="22dp"
-                        android:layout_marginBottom="18dp"
-                        android:visibility="invisible"
-                        app:endIconDrawable="@drawable/ic_clear"
-                        app:endIconMode="clear_text"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/help_button"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/search_text_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:singleLine="true" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/search_text_input"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/titleSearchAreaGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="text_title,search_button" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.constraintlayout.widget.Group
-                        android:id="@+id/titleSearchAreaGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:constraint_referenced_ids="text_title,search_button" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,7 +125,8 @@
                 android:scrollbarThumbVertical="@drawable/thumb"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                android:overScrollMode="never"/>
 
             <TextView
                 android:id="@+id/progressText"

@@ -29,25 +29,21 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundSurface">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp">
+            app:elevation="0dp"
+            android:background="@color/backgroundSurface">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <LinearLayout
+                android:id="@+id/container1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll"
-                app:elevation="0dp"
-                android:background="@color/backgroundSurface">
-
-                <LinearLayout
-                    android:id="@+id/container1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll">
 
                 <TextView
                     android:id="@+id/title"
@@ -73,9 +69,8 @@
                     app:tabTextAppearance="@style/tabText"
                     app:tabSelectedTextColor="@color/textPrimaryColor"
                     app:tabTextColor="@color/inactiveElementColor" />
-                </LinearLayout>
+            </LinearLayout>
 
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2
