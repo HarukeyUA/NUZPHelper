@@ -60,7 +60,7 @@
     <string name="progress">Завантаження…</string>
     <string name="search">Пошук</string>
     <string name="help">Допомога</string>
-    <string name="phone_book_disclaimer">Всі дані на сторінці телефонної книги вилучені з https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-zntu. Розробник додатку не несе відповідальності за недостовірність або застарілість витягнутих даних.</string>
+    <string name="phone_book_disclaimer">Всі дані на сторінці телефонної книги вилучені з https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-universitetu. Розробник додатку не несе відповідальності за недостовірність або застарілість витягнутих даних.</string>
     <string name="phone_book_disclaimer_title">Інформація про дані телефонної книги</string>
     <string name="dark_theme">Темна</string>
     <string name="light_theme">Світла</string>

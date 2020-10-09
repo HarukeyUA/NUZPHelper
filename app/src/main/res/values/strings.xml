@@ -62,7 +62,7 @@
     <string name="progress">Working hard…</string>
     <string name="search">Search</string>
     <string name="help">help</string>
-    <string name="phone_book_disclaimer">All data on the phone book page extracted from https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-zntu. Developer of the application is not responsible for the obsolescence or inaccuracy of this data.</string>
+    <string name="phone_book_disclaimer">All data on the phone book page extracted from https://zp.edu.ua/spisok-telefoniv-strukturnih-pidrozdiliv-universitetu. Developer of the application is not responsible for the obsolescence or inaccuracy of this data.</string>
     <string name="phone_book_disclaimer_title">Information about the phone book data</string>
     <string name="dark_theme">Dark</string>
     <string name="light_theme">Light</string>
