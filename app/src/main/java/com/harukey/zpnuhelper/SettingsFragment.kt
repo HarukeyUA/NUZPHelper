@@ -28,6 +28,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.harukey.zpnuhelper.databinding.SettingsFragmentBinding
 
 
@@ -45,6 +46,21 @@ class SettingsFragment : Fragment() {
         restorePreferenceState(view.dateSyncCheckBox, view.themeSpinner)
         setSaveStateCallbacks(view.dateSyncCheckBox, view.themeSpinner)
         setButtonsCallbacks(view.developerButton, view.designerButton)
+
+        val manager = ReviewManagerFactory.create(context)
+        manager.requestReviewFlow().addOnCompleteListener { request ->
+            val counterValue = sharedPref.getInt(SETTINGS_COUNTER, 0)
+            if (request.isSuccessful && counterValue == 1) {
+                val reviewInfo = request.result
+                manager.launchReviewFlow(activity, reviewInfo).addOnSuccessListener {
+                    incrementCounter()
+                }
+            } else if (counterValue > 3) {
+                resetCounter()
+            } else if (request.isSuccessful) {
+                incrementCounter()
+            }
+        }
 
         return view.root
     }
@@ -156,6 +172,21 @@ class SettingsFragment : Fragment() {
             linkIntent.resolveActivity(requireActivity().packageManager)?.let {
                 startActivity(linkIntent)
             }
+        }
+    }
+
+    private fun incrementCounter() {
+        val currentValue = sharedPref.getInt(SETTINGS_COUNTER, 0)
+        with(sharedPref.edit()) {
+            putInt(SETTINGS_COUNTER, currentValue.plus(1))
+            apply()
+        }
+    }
+
+    private fun resetCounter() {
+        with(sharedPref.edit()) {
+            putInt(SETTINGS_COUNTER, 0)
+            apply()
         }
     }
 
