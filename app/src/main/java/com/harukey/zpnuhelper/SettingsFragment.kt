@@ -21,6 +21,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,22 +48,30 @@ class SettingsFragment : Fragment() {
         setSaveStateCallbacks(view.dateSyncCheckBox, view.themeSpinner)
         setButtonsCallbacks(view.developerButton, view.designerButton)
 
-        val manager = ReviewManagerFactory.create(context)
-        manager.requestReviewFlow().addOnCompleteListener { request ->
-            val counterValue = sharedPref.getInt(SETTINGS_COUNTER, 0)
-            if (request.isSuccessful && counterValue == 1) {
-                val reviewInfo = request.result
-                manager.launchReviewFlow(activity, reviewInfo).addOnSuccessListener {
-                    incrementCounter()
-                }
-            } else if (counterValue > 3) {
-                resetCounter()
-            } else if (request.isSuccessful) {
-                incrementCounter()
-            }
-        }
+        setupReviewPopup()
 
         return view.root
+    }
+
+    private fun setupReviewPopup() {
+        try {
+            val manager = ReviewManagerFactory.create(context)
+            manager.requestReviewFlow().addOnCompleteListener { request ->
+                val counterValue = sharedPref.getInt(SETTINGS_COUNTER, 0)
+                if (request.isSuccessful && counterValue == 1) {
+                    val reviewInfo = request.result
+                    manager.launchReviewFlow(activity, reviewInfo).addOnSuccessListener {
+                        incrementCounter()
+                    }
+                } else if (counterValue > 3) {
+                    resetCounter()
+                } else if (request.isSuccessful) {
+                    incrementCounter()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun setupCustomSpinner(spinner: Spinner) {
