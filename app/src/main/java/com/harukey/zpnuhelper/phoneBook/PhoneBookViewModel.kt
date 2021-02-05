@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,19 +18,23 @@ package com.harukey.zpnuhelper.phoneBook
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
 
-enum class ContentState { Ok, FetchError, ParseError, Loading}
+enum class ContentState { Ok, FetchError, ParseError, Loading }
 
 class PhoneBookViewModel(application: Application) : AndroidViewModel(application) {
 
     var phoneBookList: LiveData<List<PhoneBookItem>>
         private set
 
-    private val repository = PhoneBookRepository(PhoneBookFetcher(), File(application.cacheDir, "phoneBook.json"))
+    private val repository =
+        PhoneBookRepository(PhoneBookFetcher(), File(application.cacheDir, "phoneBook.json"))
 
     private val _state = MutableLiveData<ContentState>()
     val state: LiveData<ContentState>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,8 +40,20 @@ fun TextView.bindInfoEntry(stringToFormat: String, argument: String) {
     val fullString = "$stringToFormat $argument"
     val typefaceSpan = TypefaceSpan("sans-serif-medium")
     val spannable = SpannableString(fullString)
-    spannable.setSpan(typefaceSpan, stringToFormat.length, fullString.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-    spannable.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.textPrimaryColor)), stringToFormat.length, fullString.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+    spannable.setSpan(
+        typefaceSpan,
+        stringToFormat.length,
+        fullString.length,
+        Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+    )
+    spannable.setSpan(
+        ForegroundColorSpan(
+            ContextCompat.getColor(
+                context,
+                R.color.textPrimaryColor
+            )
+        ), stringToFormat.length, fullString.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+    )
     this.text = spannable
 
 }

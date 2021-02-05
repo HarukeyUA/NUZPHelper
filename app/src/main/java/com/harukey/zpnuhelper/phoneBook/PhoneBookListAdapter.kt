@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ package com.harukey.zpnuhelper.phoneBook
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.harukey.zpnuhelper.R
 import com.harukey.zpnuhelper.databinding.PhoneBookEntryBinding
@@ -29,9 +29,10 @@ import com.harukey.zpnuhelper.databinding.PhoneBookTitleBinding
 private const val TITLE_VIEW_TYPE = 0
 private const val ENTRY_VIEW_TYPE = 1
 
-class PhoneBookListAdapter: ListAdapter<PhoneBookItem, RecyclerView.ViewHolder>(DiffCallback()) {
+class PhoneBookListAdapter : ListAdapter<PhoneBookItem, RecyclerView.ViewHolder>(DiffCallback()) {
 
-    class TitleViewHolder(private val binding: PhoneBookTitleBinding): RecyclerView.ViewHolder(binding.root) {
+    class TitleViewHolder(private val binding: PhoneBookTitleBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(title: PhoneBookTitle) {
             binding.phoneBookTitle = title
@@ -39,7 +40,8 @@ class PhoneBookListAdapter: ListAdapter<PhoneBookItem, RecyclerView.ViewHolder>(
         }
     }
 
-    class EntryViewHolder(private val binding: PhoneBookEntryBinding): RecyclerView.ViewHolder(binding.root) {
+    class EntryViewHolder(private val binding: PhoneBookEntryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entry: PhoneBookEntry) {
             binding.phoneBookEntry = entry
@@ -49,11 +51,19 @@ class PhoneBookListAdapter: ListAdapter<PhoneBookItem, RecyclerView.ViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TITLE_VIEW_TYPE) {
-            TitleViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-                R.layout.phone_book_title, parent, false))
+            TitleViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.phone_book_title, parent, false
+                )
+            )
         } else {
-            EntryViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-                R.layout.phone_book_entry, parent, false))
+            EntryViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.phone_book_entry, parent, false
+                )
+            )
         }
     }
 
@@ -68,19 +78,19 @@ class PhoneBookListAdapter: ListAdapter<PhoneBookItem, RecyclerView.ViewHolder>(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(getItem(position)) {
+        return when (getItem(position)) {
             is PhoneBookTitle -> TITLE_VIEW_TYPE
             is PhoneBookEntry -> ENTRY_VIEW_TYPE
         }
     }
 
-    class DiffCallback: DiffUtil.ItemCallback<PhoneBookItem>() {
+    class DiffCallback : DiffUtil.ItemCallback<PhoneBookItem>() {
         override fun areItemsTheSame(oldItem: PhoneBookItem, newItem: PhoneBookItem): Boolean {
             return newItem === oldItem
         }
 
         override fun areContentsTheSame(oldItem: PhoneBookItem, newItem: PhoneBookItem): Boolean {
-            return when(oldItem) {
+            return when (oldItem) {
                 is PhoneBookTitle -> if (newItem is PhoneBookTitle) oldItem == newItem else false
                 is PhoneBookEntry -> if (newItem is PhoneBookEntry) oldItem == newItem else false
             }

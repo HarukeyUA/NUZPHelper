@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,8 +59,7 @@ class PhoneBookRepository(private val fetcher: PhoneBookFetcher, private val cac
                 e.printStackTrace()
                 getListFromWeb()
             }
-        }
-        else {
+        } else {
             getListFromWeb()
         }
     }
@@ -70,7 +69,7 @@ class PhoneBookRepository(private val fetcher: PhoneBookFetcher, private val cac
             val adapter = moshi.adapter<List<PhoneBookItem>>(moshiType)
             val json = adapter.toJson(phoneBookCopy)
             try {
-                PrintWriter(cache).use {out -> out.print(json)}
+                PrintWriter(cache).use { out -> out.print(json) }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

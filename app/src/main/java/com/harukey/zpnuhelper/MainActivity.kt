@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        val navHostController = supportFragmentManager.findFragmentById(R.id.main_container) as NavHostFragment
+        val navHostController =
+            supportFragmentManager.findFragmentById(R.id.main_container) as NavHostFragment
         NavigationUI.setupWithNavController(bottomNavigationView, navHostController.navController)
 
         // Hide bottom navigation when keyboard is open on schedule fragment

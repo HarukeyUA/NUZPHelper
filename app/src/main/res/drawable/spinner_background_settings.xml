@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <layer-list>
-            <item android:drawable="@drawable/ic_dropdown_arrow" android:gravity="center" android:right="5dp"/>
+            <item android:drawable="@drawable/ic_dropdown_arrow" android:gravity="center" android:right="5dp" />
         </layer-list>
     </item>
 </selector>

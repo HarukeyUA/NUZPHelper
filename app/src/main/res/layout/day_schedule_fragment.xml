@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
     tools:context=".daySchedule.DayScheduleFragment">
 
     <data>
+
         <variable
             name="ViewModel"
             type="com.harukey.zpnuhelper.daySchedule.DayScheduleViewModel" />
@@ -35,8 +36,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
-            android:background="@color/backgroundSurface">
+            android:background="@color/backgroundSurface"
+            app:elevation="0dp">
 
             <LinearLayout
                 android:id="@+id/container1"
@@ -62,12 +63,12 @@
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/backgroundSurface"
                     android:layout_marginStart="@dimen/horizontal_screen_margin"
                     android:layout_marginEnd="@dimen/horizontal_screen_margin"
                     android:layout_marginBottom="10dp"
-                    app:tabTextAppearance="@style/tabText"
+                    android:background="@color/backgroundSurface"
                     app:tabSelectedTextColor="@color/textPrimaryColor"
+                    app:tabTextAppearance="@style/tabText"
                     app:tabTextColor="@color/inactiveElementColor" />
             </LinearLayout>
 
@@ -84,6 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:gravity="bottom|center_horizontal"
             android:orientation="horizontal"
             android:paddingStart="@dimen/schedule_card_horizontal_padding"
             android:paddingTop="@dimen/schedule_card_vertical_padding"
@@ -92,8 +94,7 @@
             app:cardBackgroundColor="@color/colorPrimary"
             app:glowColor="@color/timeLeftCardGlow"
             app:glowSize="10dp"
-            app:glowYOffset="10.0"
-            android:gravity="bottom|center_horizontal">
+            app:glowYOffset="10.0">
 
             <TextView
                 scheduleStatus="@{ViewModel.scheduleStatus}"

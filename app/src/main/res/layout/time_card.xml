@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="ViewModel"
             type="com.harukey.zpnuhelper.daySchedule.timeSchedule.TimeScheduleViewModel" />
@@ -29,33 +30,33 @@
 
     <com.harukey.zpnuhelper.ui.GlowCardView
         android:id="@+id/scheduleItem"
+        isBreak="@{ViewModel.isBreak}"
+        isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="12dp"
-        android:paddingEnd="12dp"
         android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
-        isBreak="@{ViewModel.isBreak}">
+        android:paddingEnd="12dp"
+        android:paddingBottom="15dp">
 
         <TextView
             android:id="@+id/scheduleText"
+            classIndex="@{ClassIndex}"
+            isBreak="@{ViewModel.isBreak}"
+            isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/inactiveElementColor"
-            android:textSize="@dimen/body_text_size"
             android:layout_weight="1"
-            classIndex="@{ClassIndex}"
-            isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
-            isBreak="@{ViewModel.isBreak}"/>
+            android:textColor="@color/inactiveElementColor"
+            android:textSize="@dimen/body_text_size" />
 
         <ImageView
             android:id="@+id/scheduleIcon"
+            isBreak="@{ViewModel.isBreak}"
+            isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            isCurrentClass="@{ViewModel.classIndicationIndex.equals(ClassIndex)}"
-            isBreak="@{ViewModel.isBreak}"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical" />
 
     </com.harukey.zpnuhelper.ui.GlowCardView>
 </layout>

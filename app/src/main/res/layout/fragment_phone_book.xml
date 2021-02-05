@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -27,8 +28,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
-            android:background="@color/backgroundSurface">
+            android:background="@color/backgroundSurface"
+            app:elevation="0dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,12 +58,12 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="2dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/help"
                     android:padding="5dp"
                     android:src="@drawable/ic_help"
+                    android:tint="@color/textPrimaryColor"
                     app:layout_constraintBottom_toBottomOf="@+id/text_title"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:contentDescription="@string/help"
-                    android:tint="@color/textPrimaryColor"/>
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageButton
                     android:id="@+id/search_button"
@@ -71,12 +72,12 @@
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="2dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/search"
                     android:padding="5dp"
                     android:src="@drawable/ic_search"
+                    android:tint="@color/textPrimaryColor"
                     app:layout_constraintBottom_toBottomOf="@+id/text_title"
-                    app:layout_constraintEnd_toStartOf="@+id/help_button"
-                    android:contentDescription="@string/search"
-                    android:tint="@color/textPrimaryColor"/>
+                    app:layout_constraintEnd_toStartOf="@+id/help_button" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/search_text_input_layout"
@@ -120,13 +121,13 @@
                 android:id="@+id/phoneCardsList"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:scrollbars="vertical"
+                android:overScrollMode="never"
                 android:scrollbarThumbVertical="@drawable/thumb"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:overScrollMode="never"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/progressText"
@@ -141,15 +142,14 @@
                 app:layout_constraintEnd_toEndOf="@+id/phoneCardsList"
                 app:layout_constraintStart_toStartOf="@+id/phoneCardsList" />
 
-            <com.google.android.material.progressindicator.ProgressIndicator
+            <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_indicator"
-                style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:animateLayoutChanges="true"
+                android:indeterminate="true"
                 android:visibility="invisible"
-                app:indicatorType="linear"
                 app:layout_constraintEnd_toEndOf="@+id/progressText"
                 app:layout_constraintStart_toStartOf="@+id/progressText"
                 app:layout_constraintTop_toBottomOf="@+id/errorsGuideline" />
@@ -170,6 +170,7 @@
 
             <Button
                 android:id="@+id/refreshButton"
+                style="@style/ShadowlessButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -178,22 +179,21 @@
                 app:icon="@drawable/ic_refresh"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/errorsGuideline"
-                style="@style/ShadowlessButton"/>
+                app:layout_constraintTop_toBottomOf="@id/errorsGuideline" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/connectionErrorGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="networkErrorText,refreshButton"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                app:constraint_referenced_ids="networkErrorText,refreshButton" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/progressGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="progress_indicator,progressText"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                app:constraint_referenced_ids="progress_indicator,progressText" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/errorsGuideline"
@@ -218,11 +218,11 @@
                 android:text="@string/nothing_found"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="@color/inactiveElementColor"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/errorsGuideline"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textColor="@color/inactiveElementColor"/>
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

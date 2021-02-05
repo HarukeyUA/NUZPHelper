@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,15 +23,19 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 
 
 @Suppress("unused")
-class MyApplication: Application() {
+class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
         val sharedPreferences =
             getSharedPreferences(APP_MAIN_PREFS, Context.MODE_PRIVATE)
-        AppCompatDelegate.setDefaultNightMode(sharedPreferences.getInt(THEME_PREFERENCE,
-            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM))
+        AppCompatDelegate.setDefaultNightMode(
+            sharedPreferences.getInt(
+                THEME_PREFERENCE,
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            )
+        )
 
         AndroidThreeTen.init(this)
     }

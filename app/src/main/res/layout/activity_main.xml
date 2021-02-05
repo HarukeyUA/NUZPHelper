@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/backgroundSurface">
+    android:background="@color/backgroundSurface"
+    tools:context=".MainActivity">
 
     <fragment
         android:id="@+id/main_container"
@@ -29,24 +29,24 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/main_nav_graph"
         tools:ignore="FragmentTagUsage" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/bottomNavigationBackground"
+        app:itemIconTint="@color/active_state_color_selector"
+        app:itemTextColor="@color/active_state_color_selector"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_main_menu"
-        app:itemTextColor="@color/active_state_color_selector"
-        app:itemIconTint="@color/active_state_color_selector"
-        app:labelVisibilityMode="labeled"
-        android:background="@color/bottomNavigationBackground"/>
+        app:menu="@menu/bottom_main_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

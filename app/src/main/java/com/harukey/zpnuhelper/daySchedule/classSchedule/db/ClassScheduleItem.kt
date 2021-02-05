@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,5 +19,7 @@ package com.harukey.zpnuhelper.daySchedule.classSchedule.db
 import androidx.room.Entity
 
 @Entity(tableName = "class_schedule_items", primaryKeys = ["Time", "Week", "DayOfWeek"])
-data class ClassScheduleItem(var ClassName: String = "", var ClassNum: String = "",
-    var Time: Int = 0, var Week: Int = 0, var DayOfWeek: Int = 0)
+data class ClassScheduleItem(
+    var ClassName: String = "", var ClassNum: String = "",
+    var Time: Int = 0, var Week: Int = 0, var DayOfWeek: Int = 0
+)

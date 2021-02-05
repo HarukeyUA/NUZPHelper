@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,13 @@ class ClassroomSearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<ClassroomSearchFragmentBinding>(inflater, R.layout.classroom_search_fragment, container, false)
+    ): View {
+        val binding = DataBindingUtil.inflate<ClassroomSearchFragmentBinding>(
+            inflater,
+            R.layout.classroom_search_fragment,
+            container,
+            false
+        )
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -51,7 +56,8 @@ class ClassroomSearchFragment : Fragment() {
 
         viewModel.currentClassInfoItem.observe(viewLifecycleOwner, { classInfoItem ->
             binding.classroomNum.text = getString(R.string.classroom_num, binding.queryInput.text)
-            binding.buildingNum.text = getString(R.string.university_building_num, classInfoItem.building)
+            binding.buildingNum.text =
+                getString(R.string.university_building_num, classInfoItem.building)
             binding.floorNum.text = getString(R.string.floor_num, classInfoItem.floor)
             binding.shareInfoFAB.show()
             binding.textInputLayout.error = null
@@ -67,9 +73,11 @@ class ClassroomSearchFragment : Fragment() {
 
         binding.shareInfoFAB.setOnClickListener {
             viewModel.currentClassInfoItem.value?.let {
-                shareInfo(viewModel.searchedClassroomNum,
+                shareInfo(
+                    viewModel.searchedClassroomNum,
                     it.floor,
-                    it.building)
+                    it.building
+                )
             }
         }
 

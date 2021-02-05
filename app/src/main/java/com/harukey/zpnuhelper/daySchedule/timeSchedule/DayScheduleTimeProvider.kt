@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,30 +21,34 @@ import org.threeten.bp.LocalTime
 const val CLASSES_NUM = 8
 
 sealed class ScheduleStatus(val timeLeft: LocalTime) {
-    class CurrentClass(timeLeft: LocalTime, val currentClass: Int): ScheduleStatus(timeLeft)
-    class Break(timeLeft: LocalTime, val upcomingClass: Int): ScheduleStatus(timeLeft)
-    object ClassesOver: ScheduleStatus(LocalTime.of(0, 0))
+    class CurrentClass(timeLeft: LocalTime, val currentClass: Int) : ScheduleStatus(timeLeft)
+    class Break(timeLeft: LocalTime, val upcomingClass: Int) : ScheduleStatus(timeLeft)
+    object ClassesOver : ScheduleStatus(LocalTime.of(0, 0))
 }
 
 object DayScheduleTimeProvider {
 
-    private val mStartClassesTime: List<LocalTime> = listOf(LocalTime.of(8, 30),
+    private val mStartClassesTime: List<LocalTime> = listOf(
+        LocalTime.of(8, 30),
         LocalTime.of(10, 5), LocalTime.of(11, 55),
         LocalTime.of(13, 25), LocalTime.of(14, 55),
         LocalTime.of(16, 45), LocalTime.of(18, 15),
-        LocalTime.of(19, 45))
+        LocalTime.of(19, 45)
+    )
 
-    private val mEndClassesTime: List<LocalTime> = listOf(LocalTime.of(9, 50),
+    private val mEndClassesTime: List<LocalTime> = listOf(
+        LocalTime.of(9, 50),
         LocalTime.of(11, 25), LocalTime.of(13, 15),
         LocalTime.of(14, 45), LocalTime.of(16, 15),
         LocalTime.of(18, 5), LocalTime.of(19, 35),
-        LocalTime.of(21, 5))
+        LocalTime.of(21, 5)
+    )
 
 
     val classStatus: ScheduleStatus
         get() {
             val currentTime = LocalTime.now()
-            if (currentTime.isAfter(mEndClassesTime[CLASSES_NUM-1]))
+            if (currentTime.isAfter(mEndClassesTime[CLASSES_NUM - 1]))
                 return ScheduleStatus.ClassesOver
             if (currentTime.isBefore(mStartClassesTime[0]))
                 return ScheduleStatus.Break(calculateBreakTimeLeft(0), 0)
@@ -52,9 +56,11 @@ object DayScheduleTimeProvider {
             for (i in 0 until CLASSES_NUM) {
                 if (isTimeInInterval(mStartClassesTime[i], mEndClassesTime[i]))
                     return ScheduleStatus.CurrentClass(calculateClassTimeLeft(i), i)
-                if (isTimeInInterval(mEndClassesTime[i], mStartClassesTime[i+1]))
-                    return ScheduleStatus.Break(calculateBreakTimeLeft(i+1),
-                        i+1)
+                if (isTimeInInterval(mEndClassesTime[i], mStartClassesTime[i + 1]))
+                    return ScheduleStatus.Break(
+                        calculateBreakTimeLeft(i + 1),
+                        i + 1
+                    )
             }
 
             return ScheduleStatus.ClassesOver

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,15 +24,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.harukey.zpnuhelper.R
 import com.harukey.zpnuhelper.databinding.TimeCardBinding
 
-class ClassTimeAdapter(private val lifecycleOwner: LifecycleOwner,
-                       private val viewModel: TimeScheduleViewModel
-):
+class ClassTimeAdapter(
+    private val lifecycleOwner: LifecycleOwner,
+    private val viewModel: TimeScheduleViewModel
+) :
     RecyclerView.Adapter<ClassTimeAdapter.TimeViewHolder>() {
 
-    class TimeViewHolder(private val binding: TimeCardBinding,
-                         lifecycleOwner: LifecycleOwner,
-                         viewModel: TimeScheduleViewModel
-    ): RecyclerView.ViewHolder(binding.root) {
+    class TimeViewHolder(
+        private val binding: TimeCardBinding,
+        lifecycleOwner: LifecycleOwner,
+        viewModel: TimeScheduleViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.viewModel = viewModel
@@ -47,8 +49,10 @@ class ClassTimeAdapter(private val lifecycleOwner: LifecycleOwner,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
-        val binding = DataBindingUtil.inflate<TimeCardBinding>(LayoutInflater.from(parent.context),
-            R.layout.time_card, parent, false)
+        val binding = DataBindingUtil.inflate<TimeCardBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.time_card, parent, false
+        )
         return TimeViewHolder(binding, lifecycleOwner, viewModel)
     }
 

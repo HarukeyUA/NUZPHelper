@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,44 +31,46 @@ import androidx.core.content.ContextCompat
 import com.harukey.zpnuhelper.R
 
 
-class GlowCardView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-defStyleAttr: Int = 0): LinearLayout(context, attrs, defStyleAttr) {
+class GlowCardView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     private var _glowColor: Int
     var glowColor: Int
-    get() = _glowColor
-    set(value) {
-        _glowColor = value
-        updateBackgroundDrawable()
-    }
+        get() = _glowColor
+        set(value) {
+            _glowColor = value
+            updateBackgroundDrawable()
+        }
 
     private var cornerRadius: Int
 
     private var _glowSize: Int
     var glowSize: Int
-    get() = _glowSize
-    set(value) {
-        _glowSize = value
-        updateBackgroundDrawable()
-    }
+        get() = _glowSize
+        set(value) {
+            _glowSize = value
+            updateBackgroundDrawable()
+        }
 
     private var _cardBackgroundColor: Int
     var cardBackgroundColor: Int
-    get() = _cardBackgroundColor
-    set(value) {
-        _cardBackgroundColor = value
-        updateBackgroundDrawable()
-    }
+        get() = _cardBackgroundColor
+        set(value) {
+            _cardBackgroundColor = value
+            updateBackgroundDrawable()
+        }
 
     private var _glowYOffset: Float = 0f
 
     private var _cardBorderSize: Int
     var cardBorderSize: Int
-    get() = _cardBorderSize
-    set(value) {
-        _cardBorderSize = value
-        updateBackgroundDrawable()
-    }
+        get() = _cardBorderSize
+        set(value) {
+            _cardBorderSize = value
+            updateBackgroundDrawable()
+        }
 
     private var _cardBorderColor: Int
     var cardBorderColor: Int
@@ -82,35 +84,45 @@ defStyleAttr: Int = 0): LinearLayout(context, attrs, defStyleAttr) {
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.GlowCardView,
-            0, 0).apply {
+            0, 0
+        ).apply {
             try {
                 _glowColor = getColor(
                     R.styleable.GlowCardView_glowColor,
-                    ContextCompat.getColor(context, R.color.default_card_glow_color))
+                    ContextCompat.getColor(context, R.color.default_card_glow_color)
+                )
                 cornerRadius = getDimensionPixelSize(
                     R.styleable.GlowCardView_cornerRadius,
-                    resources.getDimensionPixelSize(R.dimen.default_glow_card_corner_radius))
+                    resources.getDimensionPixelSize(R.dimen.default_glow_card_corner_radius)
+                )
                 _glowSize = getDimensionPixelSize(
                     R.styleable.GlowCardView_glowSize,
-                    resources.getDimensionPixelSize(R.dimen.default_glow_card_glow_size))
+                    resources.getDimensionPixelSize(R.dimen.default_glow_card_glow_size)
+                )
                 _cardBackgroundColor = getColor(
                     R.styleable.GlowCardView_cardBackgroundColor,
-                    ContextCompat.getColor(context, R.color.default_card_background))
+                    ContextCompat.getColor(context, R.color.default_card_background)
+                )
                 _glowYOffset = getFloat(
                     R.styleable.GlowCardView_glowYOffset,
-                    0f)
+                    0f
+                )
                 _cardBorderSize = getDimensionPixelSize(
                     R.styleable.GlowCardView_borderSize,
-                    0)
+                    0
+                )
                 _cardBorderColor = getColor(
                     R.styleable.GlowCardView_borderColor,
-                    ContextCompat.getColor(context, R.color.colorPrimary))
+                    ContextCompat.getColor(context, R.color.colorPrimary)
+                )
             } finally {
                 recycle()
             }
         }
-        setPadding(paddingLeft+_glowSize, paddingTop+_glowSize,
-            paddingRight+_glowSize, paddingBottom+_glowSize)
+        setPadding(
+            paddingLeft + _glowSize, paddingTop + _glowSize,
+            paddingRight + _glowSize, paddingBottom + _glowSize
+        )
     }
 
     override fun onFinishInflate() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package com.harukey.zpnuhelper.phoneBook
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +26,7 @@ import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.harukey.zpnuhelper.R
 import com.harukey.zpnuhelper.databinding.FragmentPhoneBookBinding
@@ -43,7 +43,7 @@ class PhoneBookFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_phone_book, container, false)
 
         val phoneBookListAdapter = PhoneBookListAdapter()
@@ -57,7 +57,7 @@ class PhoneBookFragment : Fragment() {
         })
 
         viewModel.state.observe(viewLifecycleOwner, { state ->
-            when(state) {
+            when (state) {
                 ContentState.Ok -> clearState()
                 ContentState.FetchError -> fetchError()
                 ContentState.ParseError -> fetchError()
@@ -80,25 +80,30 @@ class PhoneBookFragment : Fragment() {
             binding.phoneCardsList.scrollToPosition(0)
         }
 
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (isSearchOpen) {
-                    hideSearch()
-                    isSearchOpen = false
-                } else {
-                    isEnabled = false
-                    activity?.onBackPressed()
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (isSearchOpen) {
+                        hideSearch()
+                        isSearchOpen = false
+                    } else {
+                        isEnabled = false
+                        activity?.onBackPressed()
+                    }
                 }
-            }
 
-        })
+            })
 
         binding.helpButton.setOnClickListener {
             val dialog = Dialog(requireContext())
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.setCancelable(false)
             dialog.setContentView(R.layout.phone_book_help_dialog)
-            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             dialog.findViewById<Button>(R.id.okButton).setOnClickListener {
                 dialog.dismiss()
             }

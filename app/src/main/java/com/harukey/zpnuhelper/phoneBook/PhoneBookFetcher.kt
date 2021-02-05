@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,10 @@ class PhoneBookFetcher {
                 when (cols.size) {
                     1 -> {
                         phoneBookItems.add(
-                            PhoneBookTitle(cols[0].text().toLowerCase(Locale.getDefault()).capitalize(Locale.ROOT))
+                            PhoneBookTitle(
+                                cols[0].text().toLowerCase(Locale.getDefault())
+                                    .capitalize(Locale.ROOT)
+                            )
                         )
                     }
                     2 -> {
@@ -73,7 +76,10 @@ class PhoneBookFetcher {
                     5 -> {
                         phoneBookItems.add(
                             PhoneBookEntry(
-                                cols[0].text(), cols[1].text(), cols[2].text(), expandNumber(cols[3].text(), cityNumberPrefix),
+                                cols[0].text(),
+                                cols[1].text(),
+                                cols[2].text(),
+                                expandNumber(cols[3].text(), cityNumberPrefix),
                                 expandNumber(cols[4].text(), localNumberPrefix)
                             )
                         )
@@ -101,13 +107,13 @@ class PhoneBookFetcher {
 
         val numbers = item.replace("-", "").split(" ").toMutableList()
         for (i in numbers.indices) {
-            if(numbers[i][0].isLetter()) // Fax section starts, stop appending prefixes
+            if (numbers[i][0].isLetter()) // Fax section starts, stop appending prefixes
                 break
-            if(numbers[i].length > 7) // If number length > 7 - it's already expanded, no need to add anything
+            if (numbers[i].length > 7) // If number length > 7 - it's already expanded, no need to add anything
                 continue
             numbers[i] = prefix.plus(numbers[i])
         }
 
-        return numbers.reduce{curr, result -> "$curr $result"}
+        return numbers.reduce { curr, result -> "$curr $result" }
     }
 }

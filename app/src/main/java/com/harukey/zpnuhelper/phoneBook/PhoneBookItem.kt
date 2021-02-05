@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 package com.harukey.zpnuhelper.phoneBook
 
 sealed class PhoneBookItem
-data class PhoneBookTitle(val title: String): PhoneBookItem()
-data class PhoneBookEntry(val assignment: String, val name: String, val location: String,
-    val cityNumber: String, val localNumber: String): PhoneBookItem()
+data class PhoneBookTitle(val title: String) : PhoneBookItem()
+data class PhoneBookEntry(
+    val assignment: String, val name: String, val location: String,
+    val cityNumber: String, val localNumber: String
+) : PhoneBookItem()

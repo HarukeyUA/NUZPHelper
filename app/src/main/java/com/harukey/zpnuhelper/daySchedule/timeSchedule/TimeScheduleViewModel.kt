@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,15 @@ class TimeScheduleViewModel : ViewModel() {
     private val _scheduleStatus = MutableLiveData<ScheduleStatus>()
 
     val classIndicationIndex = Transformations.map(_scheduleStatus) { status ->
-        when(status) {
+        when (status) {
             is ScheduleStatus.CurrentClass -> status.currentClass
             is ScheduleStatus.Break -> status.upcomingClass
             ScheduleStatus.ClassesOver -> -1
-        }}
+        }
+    }
 
     val isBreak = Transformations.map(_scheduleStatus) { status ->
-        when(status) {
+        when (status) {
             is ScheduleStatus.Break -> true
             else -> false
         }

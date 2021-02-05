@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -62,8 +62,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/dateSyncSettingDetails"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/dateSyncSettingTitle"
-                tools:ignore="ContentDescription"
-                app:tint="@color/textPrimaryColor"/>
+                app:tint="@color/textPrimaryColor"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/dateSyncSettingTitle"
@@ -124,8 +124,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/themeSettingDetails"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/themeSettingTitle"
-                tools:ignore="ContentDescription"
-                app:tint="@color/textPrimaryColor"/>
+                app:tint="@color/textPrimaryColor"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/themeSettingTitle"
@@ -156,14 +156,14 @@
 
             <Spinner
                 android:id="@+id/themeSpinner"
+                style="@style/SettingsSpinner"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="39dp"
                 android:entries="@array/theme_mode"
                 app:layout_constraintBottom_toBottomOf="@+id/themeSettingDetails"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/themeSettingTitle"
-                style="@style/SettingsSpinner" />
+                app:layout_constraintTop_toTopOf="@+id/themeSettingTitle" />
 
             <TextView
                 android:id="@+id/developersTitile"
@@ -225,17 +225,17 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/developerButton"
+                style="@style/ShadowlessButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/horizontal_screen_margin"
                 android:text="@string/github"
+                android:textSize="12sp"
                 app:icon="@drawable/ic_github"
                 app:layout_constraintBottom_toBottomOf="@+id/developerAvatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/designerButton"
-                app:layout_constraintTop_toTopOf="@+id/developerAvatar"
-                android:textSize="12sp"
-                style="@style/ShadowlessButton"/>
+                app:layout_constraintTop_toTopOf="@+id/developerAvatar" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/designerAvatar"
@@ -281,17 +281,17 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/designerButton"
+                style="@style/ShadowlessButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/horizontal_screen_margin"
                 android:text="@string/telegram"
+                android:textAllCaps="false"
+                android:textSize="12sp"
                 app:icon="@drawable/ic_telegram"
                 app:layout_constraintBottom_toBottomOf="@+id/designerAvatar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/designerAvatar"
-                android:textSize="12sp"
-                android:textAllCaps="false"
-                style="@style/ShadowlessButton"/>
+                app:layout_constraintTop_toTopOf="@+id/designerAvatar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

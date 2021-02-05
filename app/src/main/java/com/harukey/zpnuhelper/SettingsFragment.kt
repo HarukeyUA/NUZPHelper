@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,12 +34,17 @@ import com.harukey.zpnuhelper.databinding.SettingsFragmentBinding
 
 class SettingsFragment : Fragment() {
 
-    private val sharedPref: SharedPreferences by lazy { requireContext().getSharedPreferences(APP_MAIN_PREFS, Context.MODE_PRIVATE) }
+    private val sharedPref: SharedPreferences by lazy {
+        requireContext().getSharedPreferences(
+            APP_MAIN_PREFS,
+            Context.MODE_PRIVATE
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = SettingsFragmentBinding.inflate(inflater)
 
         setupCustomSpinner(view.themeSpinner)
@@ -55,12 +59,12 @@ class SettingsFragment : Fragment() {
 
     private fun setupReviewPopup() {
         try {
-            val manager = ReviewManagerFactory.create(context)
+            val manager = ReviewManagerFactory.create(requireContext())
             manager.requestReviewFlow().addOnCompleteListener { request ->
                 val counterValue = sharedPref.getInt(SETTINGS_COUNTER, 0)
                 if (request.isSuccessful && counterValue == 1) {
                     val reviewInfo = request.result
-                    manager.launchReviewFlow(activity, reviewInfo).addOnSuccessListener {
+                    manager.launchReviewFlow(requireActivity(), reviewInfo).addOnSuccessListener {
                         incrementCounter()
                     }
                 } else if (counterValue > 3) {
@@ -78,7 +82,8 @@ class SettingsFragment : Fragment() {
         val adapter = object : ArrayAdapter<Any>(
             requireContext(),
             android.R.layout.simple_spinner_dropdown_item,
-            resources.getStringArray(R.array.theme_mode)) {
+            resources.getStringArray(R.array.theme_mode)
+        ) {
             override fun getDropDownView(
                 position: Int,
                 convertView: View?,
@@ -112,12 +117,13 @@ class SettingsFragment : Fragment() {
     private fun restorePreferenceState(checkBox: CheckBox, spinner: Spinner) {
         checkBox.isChecked = sharedPref.getBoolean(SYNC_DATE_PREFERENCE, false)
 
-        val themeSelection = when(sharedPref.getInt(THEME_PREFERENCE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)) {
-            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> 0
-            AppCompatDelegate.MODE_NIGHT_NO -> 1
-            AppCompatDelegate.MODE_NIGHT_YES -> 2
-            else -> 0
-        }
+        val themeSelection =
+            when (sharedPref.getInt(THEME_PREFERENCE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)) {
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> 0
+                AppCompatDelegate.MODE_NIGHT_NO -> 1
+                AppCompatDelegate.MODE_NIGHT_YES -> 2
+                else -> 0
+            }
         spinner.setSelection(themeSelection)
     }
 
@@ -138,7 +144,7 @@ class SettingsFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                when(position) {
+                when (position) {
                     0 -> {
                         saveThemePreference(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                         AppCompatDelegate

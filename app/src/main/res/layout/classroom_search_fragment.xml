@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,18 +21,19 @@
     tools:context=".classSearch.ClassroomSearchFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.harukey.zpnuhelper.classSearch.ClassroomSearchViewModel" />
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundSurface"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundSurface">
 
         <TextView
             android:id="@+id/text_title"
@@ -53,13 +54,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
+            app:boxStrokeErrorColor="@color/accent"
+            app:errorIconDrawable="@drawable/ic_error"
+            app:errorIconTint="@color/accent"
+            app:errorTextColor="@color/accent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_title"
-            app:errorTextColor="@color/accent"
-            app:boxStrokeErrorColor="@color/accent"
-            app:errorIconTint="@color/accent"
-            app:errorIconDrawable="@drawable/ic_error">
+            app:layout_constraintTop_toBottomOf="@+id/text_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/queryInput"
@@ -91,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textPrimaryColor"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/buildingNum"
@@ -100,14 +101,14 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/textPrimaryColor"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/floorNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textPrimaryColor"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </com.harukey.zpnuhelper.ui.GlowCardView>
 
@@ -118,11 +119,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="25dp"
             android:backgroundTint="@color/colorPrimary"
+            app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_share"
-            app:tint="@color/colorOnPrimary"
-            app:borderWidth="0dp"/>
+            app:tint="@color/colorOnPrimary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

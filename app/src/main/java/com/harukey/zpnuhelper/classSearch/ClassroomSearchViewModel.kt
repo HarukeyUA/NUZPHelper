@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,8 +74,7 @@ class ClassroomSearchViewModel(application: Application) : AndroidViewModel(appl
             _isCardShown.value = true
             searchedClassroomNum = query
             _currentClassInfoItem.value = value
-        }
-        else
+        } else
             _notFoundEvent.value = true
     }
 
@@ -85,7 +84,8 @@ class ClassroomSearchViewModel(application: Application) : AndroidViewModel(appl
 
     private suspend fun loadJsonString(): Map<String, ClassInfoItem>? {
         return withContext(Dispatchers.IO) {
-            val json = getApplication<Application>().resources.openRawResource(R.raw.rooms).bufferedReader()
+            val json = getApplication<Application>().resources.openRawResource(R.raw.rooms)
+                .bufferedReader()
                 .use { it.readText() }
             val jsonAdapter: JsonAdapter<Map<String, ClassInfoItem>> = moshi.adapter(jsonStructType)
             jsonAdapter.fromJson(json)

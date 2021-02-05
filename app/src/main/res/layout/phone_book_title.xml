@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="PhoneBookTitle"
             type="com.harukey.zpnuhelper.phoneBook.PhoneBookTitle" />
@@ -27,13 +28,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{PhoneBookTitle.title}"
-        tools:text="Title placeholder"
-        android:textColor="@color/inactiveElementColor"
-        android:textSize="18sp"
         android:layout_marginStart="@dimen/horizontal_screen_margin"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/horizontal_screen_margin"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"/>
+        android:text="@{PhoneBookTitle.title}"
+        android:textColor="@color/inactiveElementColor"
+        android:textSize="18sp"
+        tools:text="Title placeholder" />
 
 </layout>

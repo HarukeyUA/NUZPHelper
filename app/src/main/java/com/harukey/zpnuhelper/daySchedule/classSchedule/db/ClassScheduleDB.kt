@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [ClassScheduleItem::class], version = 1, exportSchema = false)
-abstract class ClassScheduleDB: RoomDatabase() {
+abstract class ClassScheduleDB : RoomDatabase() {
 
     abstract fun scheduleDao(): ClassScheduleDAO
 

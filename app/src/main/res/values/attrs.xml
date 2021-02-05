@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
         <attr name="glowColor" format="color" />
         <attr name="glowSize" format="dimension" />
         <attr name="cornerRadius" format="dimension" />
-        <attr name="cardBackgroundColor" format="color"/>
-        <attr name="glowYOffset" format="float"/>
+        <attr name="cardBackgroundColor" format="color" />
+        <attr name="glowYOffset" format="float" />
         <attr name="borderSize" format="dimension" />
         <attr name="borderColor" format="color" />
     </declare-styleable>

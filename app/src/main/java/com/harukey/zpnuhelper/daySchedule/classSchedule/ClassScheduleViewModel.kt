@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,10 @@
 package com.harukey.zpnuhelper.daySchedule.classSchedule
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.harukey.zpnuhelper.daySchedule.classSchedule.db.ClassScheduleItem
 import kotlinx.coroutines.launch
 import org.threeten.bp.LocalDate
@@ -42,11 +45,12 @@ class ClassScheduleViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    fun getCurrentWeekDay() : Int {
+    fun getCurrentWeekDay(): Int {
         val weekDay = LocalDate.now().dayOfWeek.ordinal
         return if (weekDay == 6) 0 else weekDay
     }
 
-    fun getWeekType(): Int = if(LocalDate.now().get(WeekFields.ISO.weekOfWeekBasedYear()) % 2 == 0) 0 else 1
+    fun getWeekType(): Int =
+        if (LocalDate.now().get(WeekFields.ISO.weekOfWeekBasedYear()) % 2 == 0) 0 else 1
 
 }

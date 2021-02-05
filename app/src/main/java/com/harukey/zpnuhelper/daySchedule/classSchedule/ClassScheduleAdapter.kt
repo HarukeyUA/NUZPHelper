@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,14 @@ import com.harukey.zpnuhelper.R
 import com.harukey.zpnuhelper.databinding.ClassScheduleItemBinding
 import com.harukey.zpnuhelper.daySchedule.classSchedule.db.ClassScheduleItem
 
-class ClassScheduleAdapter(private val viewModel: ClassScheduleViewModel
-): ListAdapter<ClassScheduleItem, ClassScheduleAdapter.ScheduleEntryViewHolder>(DiffCallback()) {
+class ClassScheduleAdapter(
+    private val viewModel: ClassScheduleViewModel
+) : ListAdapter<ClassScheduleItem, ClassScheduleAdapter.ScheduleEntryViewHolder>(DiffCallback()) {
 
-    class ScheduleEntryViewHolder(private val binding: ClassScheduleItemBinding,
-                                  private val viewModel: ClassScheduleViewModel
-    ): RecyclerView.ViewHolder(binding.root) {
+    class ScheduleEntryViewHolder(
+        private val binding: ClassScheduleItemBinding,
+        private val viewModel: ClassScheduleViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private var currentEntry: ClassScheduleItem? = null
 
@@ -65,8 +67,10 @@ class ClassScheduleAdapter(private val viewModel: ClassScheduleViewModel
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleEntryViewHolder {
-        val binding = DataBindingUtil.inflate<ClassScheduleItemBinding>(LayoutInflater.from(parent.context),
-            R.layout.class_schedule_item, parent, false)
+        val binding = DataBindingUtil.inflate<ClassScheduleItemBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.class_schedule_item, parent, false
+        )
         return ScheduleEntryViewHolder(binding, viewModel)
     }
 

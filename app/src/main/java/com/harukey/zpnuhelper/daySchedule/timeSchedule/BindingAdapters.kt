@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import com.harukey.zpnuhelper.ui.GlowCardView
 @BindingAdapter("classIndex")
 fun TextView.bindClassText(classIndex: Int?) {
     classIndex?.let {
-        text = when(classIndex) {
+        text = when (classIndex) {
             0 -> resources.getString(R.string.first_class)
             1 -> resources.getString(R.string.second_class)
             2 -> resources.getString(R.string.third_class)
@@ -46,8 +46,7 @@ fun ImageView.bindClassIcon(isCurrentClass: Boolean, isBreak: Boolean) {
         if (isBreak) {
             setImageResource(R.drawable.ic_clock)
             setColorFilter(ContextCompat.getColor(context, R.color.accent))
-        }
-        else {
+        } else {
             setImageResource(R.drawable.ic_check)
             setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary))
         }

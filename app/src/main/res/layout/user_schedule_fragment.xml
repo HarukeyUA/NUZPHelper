@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Nazar Rusnak
+  ~ Copyright 2021 Nazar Rusnak
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -34,11 +34,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:paddingStart="@dimen/schedule_card_horizontal_padding"
                 android:paddingTop="@dimen/schedule_card_vertical_padding"
                 android:paddingEnd="@dimen/schedule_card_horizontal_padding"
-                android:paddingBottom="@dimen/schedule_card_vertical_padding"
-                android:layout_weight="1">
+                android:paddingBottom="@dimen/schedule_card_vertical_padding">
 
                 <Spinner
                     android:id="@+id/spinnerWeekDay"
@@ -75,12 +75,11 @@
             android:id="@+id/scheduleList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:background="@drawable/static_card_background"
+            android:overScrollMode="never"
             android:paddingStart="@dimen/schedule_card_horizontal_padding"
             android:paddingEnd="@dimen/schedule_card_horizontal_padding"
-            />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Nazar Rusnak
+ * Copyright 2021 Nazar Rusnak
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,8 +44,13 @@ class DayScheduleFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<DayScheduleFragmentBinding>(inflater, R.layout.day_schedule_fragment, container, false)
+    ): View {
+        val binding = DataBindingUtil.inflate<DayScheduleFragmentBinding>(
+            inflater,
+            R.layout.day_schedule_fragment,
+            container,
+            false
+        )
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -64,7 +69,7 @@ class DayScheduleFragment : Fragment() {
 
         binding.pager.offscreenPageLimit = 1
 
-        binding.pager.registerOnPageChangeCallback(object:
+        binding.pager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
