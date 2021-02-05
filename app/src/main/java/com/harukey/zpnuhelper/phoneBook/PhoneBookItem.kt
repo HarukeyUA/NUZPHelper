@@ -16,8 +16,14 @@
 
 package com.harukey.zpnuhelper.phoneBook
 
+import com.squareup.moshi.JsonClass
+
 sealed class PhoneBookItem
+
+@JsonClass(generateAdapter = true)
 data class PhoneBookTitle(val title: String) : PhoneBookItem()
+
+@JsonClass(generateAdapter = true)
 data class PhoneBookEntry(
     val assignment: String, val name: String, val location: String,
     val cityNumber: String, val localNumber: String

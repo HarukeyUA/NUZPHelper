@@ -25,7 +25,6 @@ import com.harukey.zpnuhelper.R
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -51,7 +50,7 @@ class ClassroomSearchViewModel(application: Application) : AndroidViewModel(appl
         get() = _isCardShown
 
     private val moshi: Moshi by lazy {
-        Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        Moshi.Builder().build()
     }
 
     private val jsonStructType: Type by lazy {

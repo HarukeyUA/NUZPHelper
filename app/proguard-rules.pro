@@ -25,5 +25,3 @@
 -keep class com.harukey.zpnuhelper.phoneBook.PhoneBookEntry { *; }
 -keep class com.harukey.zpnuhelper.classSearch.ClassInfoItem { *; }
 -keep class com.harukey.zpnuhelper.daySchedule.classSchedule.db.ClassScheduleItem { *; }
-
--keep class kotlin.Metadata { *; } # Fixes moshi's kotlin adapters

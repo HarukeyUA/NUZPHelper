@@ -16,4 +16,7 @@
 
 package com.harukey.zpnuhelper.classSearch
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class ClassInfoItem(val building: String, val floor: String)

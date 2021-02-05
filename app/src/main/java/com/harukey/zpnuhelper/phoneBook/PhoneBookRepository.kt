@@ -21,7 +21,6 @@ import androidx.lifecycle.MutableLiveData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -41,8 +40,7 @@ class PhoneBookRepository(private val fetcher: PhoneBookFetcher, private val cac
             PolymorphicJsonAdapterFactory.of(PhoneBookItem::class.java, "entryType")
                 .withSubtype(PhoneBookTitle::class.java, "title")
                 .withSubtype(PhoneBookEntry::class.java, "entry")
-        ).add(KotlinJsonAdapterFactory())
-            .build()
+        ).build()
     }
 
     private val moshiType = Types.newParameterizedType(
